@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0"><title>ConceptBridge-TRACE | Learn by testing</title>
+  <link rel="stylesheet" href="/static/css/app.css?v=20261016-simulators3">
+</head>
+<body>
+<main id="auth-gate" class="auth-gate" aria-labelledby="auth-title">
+  <section class="auth-card">
+    <a class="brand auth-brand" href="#" aria-label="ConceptBridge"><span class="brand-mark"><i></i><i></i><b></b></span><span>ConceptBridge<small>TRACE / ENGINEERING</small></span></a>
+    <p class="eyebrow">YOUR PRIVATE LEARNING SPACE</p>
+    <h1 id="auth-title">Welcome back.</h1>
+    <p class="auth-subtitle">Sign in to continue learning. Your quiz history and projects are private to your account.</p>
+    <div class="auth-tabs" role="tablist" aria-label="Account access">
+      <button type="button" class="auth-tab active" data-auth-mode="login" role="tab" aria-selected="true">Sign in</button>
+      <button type="button" class="auth-tab" data-auth-mode="register" role="tab" aria-selected="false">Create account</button>
+    </div>
+    <form id="auth-form" novalidate>
+      <label class="auth-label" for="auth-email">Email address</label>
+      <input id="auth-email" class="auth-input" type="email" autocomplete="email" maxlength="254" required>
+      <label class="auth-label" for="auth-password">Password</label>
+      <input id="auth-password" class="auth-input" type="password" autocomplete="current-password" minlength="12" maxlength="128" required>
+      <p id="auth-password-hint" class="auth-hint" hidden>Use at least 12 characters.</p>
+      <p id="auth-error" class="auth-error" role="alert" hidden></p>
+      <button id="auth-submit" class="btn btn-dark auth-submit" type="submit">Sign in <span>→</span></button>
+    </form>
+    <p class="auth-footnote">Accounts use secure password hashing. Learning data is kept separate by account.</p>
+  </section>
+</main>
+<div class="app-shell" id="app-shell" hidden>
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="#dashboard" aria-label="ConceptBridge home"><span class="brand-mark"><i></i><i></i><b></b></span><span>ConceptBridge<small>TRACE / ENGINEERING</small></span></a>
+    <div class="nav-label">LEARNING SPACE</div>
+    <nav>
+      <a href="#dashboard" class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span>Overview</a>
+      <a href="#learn" class="nav-item" data-page="learn"><span class="nav-icon">▤</span>Learn</a>
+      <a href="#lab" class="nav-item" data-page="lab"><span class="nav-icon">⌘</span>Half Adder Lab</a>
+      <a href="#quiz" class="nav-item" data-page="quiz"><span class="nav-icon">✓</span>Practice quiz</a>
+      <a href="#progress" class="nav-item" data-page="progress"><span class="nav-icon">◷</span>My progress</a>
+      <a href="#planner" class="nav-item" data-page="planner"><span class="nav-icon">▦</span>Project planner</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="offline-dot"></div><span>Private learning space</span><small>Progress belongs to your account</small></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><div class="crumb">ConceptBridge <span>/</span> <b id="page-name">Overview</b></div><div class="top-right"><span class="account-email" id="account-email"></span><button id="logout-button" class="btn btn-small btn-outline" type="button">Sign out</button><span class="avatar">CB</span></div></header>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section class="page active" id="page-dashboard">
+      <div class="welcome-row"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>Good to have you here.</h1><p class="subhead">Build your understanding one signal at a time.</p></div><a class="btn btn-dark" href="#lab">Open Half Adder Lab <span>↗</span></a></div>
+      <div class="dashboard-grid">
+        <article class="card continue-card"><div class="card-top"><div><p class="eyebrow">PICK UP WHERE YOU LEFT OFF</p><h2 id="continue-title">Half Adder: the first building block</h2></div><span class="icon-square">01</span></div><p class="muted"><span id="continue-summary">Explore the lesson, work an example, then check your understanding.</span></p><div class="continue-meta"><span class="tag teal-tag">DIGITAL LOGIC</span><span>·</span><span id="continue-duration">8 min lesson</span><span id="lesson-status" class="lesson-status-chip">Not started</span><span class="push"></span><a id="continue-link" class="text-link" href="#learn/half-adder">Continue <b>→</b></a></div><div class="progress-track"><span id="lesson-bar"></span></div></article>
+        <article class="card stat-card"><div class="stat-head"><span class="eyebrow">QUIZ ATTEMPTS</span><span class="stat-symbol">↗</span></div><strong id="stat-attempts">0</strong><p>practice sessions completed</p><div class="stat-foot">Your activity, not an estimate</div></article>
+        <article class="card stat-card"><div class="stat-head"><span class="eyebrow">CORRECT ANSWERS</span><span class="stat-symbol">◎</span></div><strong id="stat-correct">0</strong><p>across all quiz attempts</p><div class="stat-foot">Earned through practice</div></article>
+      </div>
+      <div class="section-head"><div><p class="eyebrow">YOUR LEARNING PATH</p><h2>Start with the fundamentals</h2></div><a href="#learn" class="text-link">All lessons <b>→</b></a></div>
+      <div id="dashboard-lessons" class="dashboard-lesson-list" aria-live="polite"></div>
+      <div class="lower-grid"><article class="card panel-card"><div class="panel-title"><div><p class="eyebrow">RECENT ACTIVITY</p><h3>Your learning, as it happens</h3></div><a href="#progress" class="text-link">View all <b>→</b></a></div><div id="recent-activity" class="activity-list"><div class="empty-state">Your activity will appear here as you explore.</div></div></article>
+      <article class="card panel-card project-glance"><div class="panel-title"><div><p class="eyebrow">PROJECT WORK</p><h3>Ideas into milestones</h3></div><span class="icon-square pale">↗</span></div><p class="muted">Break a learning project into tasks, mark milestones, and see the work move forward.</p><div class="project-glance-bottom"><span id="project-count">No projects yet</span><a href="#planner" class="text-link">Open planner <b>→</b></a></div></article></div>
+    </section>
+    <section class="page" id="page-learn">
+      <div id="lesson-library">
+        <div class="page-heading"><div><p class="eyebrow">YOUR DIGITAL ENGINEERING PATH</p><h1>Learn by building</h1><p class="subhead">Nine connected lessons. Choose a topic, test the idea, and keep your progress.</p></div><span id="lesson-count" class="tag teal-tag"></span></div>
+        <div id="lesson-catalog" class="curriculum-groups" aria-live="polite"></div>
+      </div>
+      <div id="lesson-detail" hidden></div>
+    </section>
+    <section class="page" id="page-lab"><div class="page-heading"><p class="eyebrow">INTERACTIVE EXPERIMENT <span class="eyebrow-line"></span> DIGITAL LOGIC</p><h1>Half Adder Lab</h1><p class="subhead">Change either input. Watch the circuit respond.</p></div>
+      <div class="lab-layout"><div class="card lab-card"><div class="lab-card-head"><div><p class="eyebrow">LIVE CIRCUIT</p><h2>Two inputs, two outputs</h2></div><span class="live-indicator"><i></i> LIVE</span></div><div class="circuit"><div class="input-stack"><div class="signal-label">INPUT A</div><button class="bit-control" id="input-a" aria-label="Toggle input A" aria-pressed="false">0</button><div class="signal-label">INPUT B</div><button class="bit-control" id="input-b" aria-label="Toggle input B" aria-pressed="false">0</button></div><svg class="wire-svg" viewBox="0 0 144 250" role="img" aria-label="Inputs connect to XOR Sum gate and AND Carry gate"><path d="M4 62 H38 Q52 62 52 78 V95 H75 M4 186 H38 Q52 186 52 170 V155 H75 M52 95 V125 H74 M52 155 V125"/><path d="M75 95 H120 M75 155 H120"/></svg><div class="gate-stack"><div class="gate-wrap"><div class="gate-label">XOR GATE <span>SUM</span></div><div class="gate-shape xor-shape"><span>⊕</span></div></div><div class="gate-wrap"><div class="gate-label">AND GATE <span>CARRY</span></div><div class="gate-shape and-shape"><span>&amp;</span></div></div></div><div class="output-stack"><div class="signal-label">SUM</div><div class="output-bit" id="output-sum">0</div><div class="signal-label">CARRY</div><div class="output-bit" id="output-carry">0</div></div></div><div class="logic-explain"><span class="explain-mark">i</span><p id="logic-explanation" aria-live="polite"></p></div></div>
+      <aside class="card result-card"><p class="eyebrow">CURRENT RESULT</p><h3>Binary addition</h3><div class="result-equation"><span id="equation-a">0</span><span>+</span><span id="equation-b">0</span><span>=</span><strong id="equation-result">00₂</strong></div><div class="result-split"><div><span>SUM</span><strong id="result-sum">0</strong><code>A XOR B</code></div><div><span>CARRY</span><strong id="result-carry">0</strong><code>A AND B</code></div></div><p class="small muted">Result is shown as <strong>Carry · Sum</strong>, in that order.</p></aside></div>
+      <article class="card full-table-card"><div class="panel-title"><div><p class="eyebrow">ALL POSSIBILITIES</p><h3>Half Adder truth table</h3></div><span class="tag teal-tag">CURRENT ROW HIGHLIGHTED</span></div><div id="lab-truth"></div></article></section>
+    <section class="page" id="page-quiz"><div class="page-heading"><p class="eyebrow">RETRIEVAL PRACTICE <span class="eyebrow-line"></span> LESSON-SPECIFIC</p><h1>Practice quiz</h1><p class="subhead">Choose a lesson, then check your understanding with its own short quiz.</p></div><div id="quiz-picker" class="card quiz-picker"><label for="quiz-lesson-select">Choose a lesson</label><select id="quiz-lesson-select"></select><button id="quiz-start-button" class="btn btn-dark" type="button">Start quiz <span>→</span></button></div><div class="quiz-layout"><div class="card quiz-card"><div class="quiz-progress"><span id="quiz-progress-label">QUESTION 1 OF 8</span><div class="progress-track"><span id="quiz-progress-bar"></span></div></div><div id="quiz-question-area"></div><div id="quiz-results" hidden></div></div><aside class="card quiz-aside"><p class="eyebrow">HOW IT WORKS</p><h3>Practice with purpose</h3><div class="aside-step"><span>01</span><p>Choose one answer for each question.</p></div><div class="aside-step"><span>02</span><p>Submit to see explanations and possible misconception cues.</p></div><div class="aside-step"><span>03</span><p>Use a follow-up prompt to check your understanding.</p></div><p class="small muted rule-note">The diagnostic uses transparent rules. A single answer is a clue to explore—not proof of how you think.</p></aside></div></section>
+    <section class="page" id="page-progress"><div class="page-heading"><p class="eyebrow">YOUR LEARNING RECORD</p><h1>Progress</h1><p class="subhead">Lesson and quiz results saved to your private account.</p></div><div id="progress-content"></div></section>
+    <section class="page" id="page-planner"><div class="page-heading planner-heading"><div><p class="eyebrow">FROM IDEA TO EVIDENCE</p><h1>Project planner</h1><p class="subhead">Turn an engineering project into clear, testable steps.</p></div><button id="new-project-btn" class="btn btn-dark">+ New project</button></div><article class="card template-callout"><div class="template-icon">⌘</div><div><span class="tag teal-tag">EXAMPLE TEMPLATE</span><h3>Digital logic learning project</h3><p class="muted">A starter project with build, test, and documentation checklist items. Nothing is marked complete.</p></div><button id="use-template" class="btn btn-outline">Use template <span>→</span></button></article><div id="project-list" class="project-list"></div><div id="project-empty" class="empty-project card"><span class="empty-symbol">▦</span><h3>Your project space is ready</h3><p>Create a project or start from the example template.</p></div></section>
+  </main>
+</div>
+<dialog id="project-dialog"><form method="dialog" id="project-form"><div class="dialog-head"><div><p class="eyebrow">PROJECT PLANNER</p><h2>New project</h2></div><button class="close-btn" value="cancel" aria-label="Close dialog">×</button></div><label for="project-title">Project title</label><input id="project-title" maxlength="100" required placeholder="e.g. Four-bit binary adder"><label for="project-description">Description <span class="muted">(optional)</span></label><textarea id="project-description" maxlength="1000" rows="3" placeholder="What are you trying to build or learn?"></textarea><div class="dialog-actions"><button class="btn btn-outline" value="cancel">Cancel</button><button id="save-project" type="submit" class="btn btn-dark" value="default">Create project</button></div></form></dialog>
+<script src="/static/js/simulator-core.js?v=20261016-simulators3" defer></script>
+<script src="/static/js/simulator-ui.js?v=20261016-simulators3" defer></script>
+<script src="/static/js/app.js?v=20261016-simulators3" defer></script>
+</body></html>

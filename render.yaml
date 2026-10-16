@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: conceptbridge-trace
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeploy: false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: DATABASE_URL
+        sync: false
